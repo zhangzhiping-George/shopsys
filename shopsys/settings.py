@@ -25,7 +25,7 @@ SECRET_KEY = 'nv3dqrinal9ovbm&hh($3x$mb9+-0k_at)(gu(zy@1*(i_e45i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.2.100',]
 
 
 # Application definition
@@ -76,8 +76,15 @@ WSGI_APPLICATION = 'shopsys.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'shopsys', 
+        'USER': 'george',
+        'PASSWORD': '123456',
+        #'HOST','PORT'
+        'OPTIONS': {
+           'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
+        'TEST': {}
     }
 }
 
