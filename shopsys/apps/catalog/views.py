@@ -6,7 +6,7 @@ def index(request, template_name):
     page_title = "产品分类"
     return render(request, template_name, locals())
 
-def show_catagory(request, category_slug, template_name):
+def show_category(request, category_slug, template_name):
     c = get_object_or_404(Category, slug=category_slug) 
     products = c.product_set.all() #>>
     page_title = c.name
