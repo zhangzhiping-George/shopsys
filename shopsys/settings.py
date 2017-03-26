@@ -14,10 +14,15 @@ import os
 import pymysql
 pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-SETTINGS_DIR=os.path.abspath(__file__)
+#SETTINGS_DIR=os.path.abspath(__file__)
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(os.path.dirname(SETTINGS_DIR))
+#BASE_DIR = os.path.dirname(os.path.dirname(SETTINGS_DIR))
 
+#settingsFilePath=os.path.abspath(__file__):$(pwd)/settings.py
+#os.path.dirname(settingsFilePath):$(pwd)
+#==> BASE_DIR: ~/shopsys, manage.py所在目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SETTINGS_DIR = os.path.dirname(__file__)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -133,7 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATICFILES_DIRS = (
-    os.path.join(SETTINGS_DIR, 'static')
+    os.path.join(SETTINGS_DIR, 'static'),
 )
 STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
