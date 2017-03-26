@@ -73,8 +73,10 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shopsys.utils.context_processors.shopsys',
             ],
         },
     },
@@ -141,5 +143,9 @@ STATICFILES_DIRS = (
     os.path.join(SETTINGS_DIR, 'static'),
 )
 STATIC_URL = '/static/'
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 SITE_NAME = '小白购'
+META_KEYWORDS = 'product, category'
+META_DESCRIPTION = 'product, category'

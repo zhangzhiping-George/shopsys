@@ -4,7 +4,9 @@
         <meta http-equiv='Content-Type' content="text/html; charset=utf-8" />
         <link rel="Stylesheet" type="text/css" href="{% static "css/base.css" %}" />
         <title>
-            {% if page_title %} {{ page.title }} - {% endif %} {{ site_name }}
+            {% block title %}
+                {% if page_title %} {{ page_title }} - {% endif %} {{ site_name }}
+            {% endblock %}
         </title>
         <meta name="keywords" contten="{{ meta_keywords }}"/>
         <meta name="descriptions" contten="{{ meta_descriptions }}"/>
