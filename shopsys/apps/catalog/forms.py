@@ -14,3 +14,5 @@ class ProductAdminForm(forms.ModelForm):
             raise forms.ValidationError('价格必须大于零.')
 
         return self.cleaned_data['price']
+class ProductAddToCartForm(forms.Form):
+    pass    
