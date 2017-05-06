@@ -15,4 +15,27 @@ class ProductAdminForm(forms.ModelForm):
 
         return self.cleaned_data['price']
 class ProductAddToCartForm(forms.Form):
-    pass    
+    quantity = forms.IntegerField(
+        label='数量', 
+        widget=forms.TextInput(attrs={
+            'size':2,
+            'value':1,
+            'class': 'quantity',
+            'maxlength':'5'
+        }), 
+        error_messages={'invalid': '请输入有效数量'}, 
+        min_value=1
+    )
+    product_slug = forms.CharField(widget=forms.HiddenInput())
+
+
+    def __init__(self, request=None, *args, **kwargs):
+        self.request = request
+        super(ProductAddToCartForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        # check client cookies status
+        if self.request:
+            if not self.request.session.test_cookie_worked():
+                raise forms.ValidationError("start your cookies.")
+        return self.cleaned_data
